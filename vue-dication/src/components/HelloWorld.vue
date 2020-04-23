@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>x350d</h2>
+    <h2>{{name}}</h2>
   </div>
 </template>
 
@@ -10,6 +9,17 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      name: ""
+    }
+  },
+  // backend 통신 설정
+  created() {
+    this.$http.get("/test").then((res) => {
+      this.name = res.data[0].content;
+    })
   }
 }
 </script>
