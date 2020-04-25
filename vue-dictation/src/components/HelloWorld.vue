@@ -15,7 +15,7 @@ export default {
       name: ""
     }
   },
-  // backend 통신 설정
+  // backend와 통신하여 data가져오기
   created() {
     this.$http.get("/test").then((res) => {
       this.name = res.data[0].content;
