@@ -1,15 +1,16 @@
 module.exports = {
-
-  //backend 서버와 연동.
-  devServer: {
-    proxy: {
-      '/*': {
-        target: 'http://localhost:3003',
-        changeOrigin:true,
-        pathRewrite: {
-          '^/': ''
+  "devServer": {
+    "proxy": {
+      "/api/": {
+        "target": "http://localhost:3003/api",
+        "changeOrigin": true,
+        "pathRewrite": {
+          "^/api": ""
         }
       }
     }
-  }
+  },
+  "transpileDependencies": [
+    "vuetify"
+  ]
 }
