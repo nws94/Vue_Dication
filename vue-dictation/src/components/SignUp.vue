@@ -140,7 +140,7 @@ export default {
       }
 
       console.log(signup);
-      this.$http.post('/api/user').then((res) => {
+      this.$http.post('/api/user',signup).then((res) => {
         console.log(res);
       }).catch((err) => {
         console.log(err);
