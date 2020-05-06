@@ -14,27 +14,86 @@
           </v-toolbar>
           <div class="pa-3">
             <v-text-field
+              v-model="user_id"
+              type="text"
+              label="아이디를 입력하세요"
+            ></v-text-field>
+            <v-text-field
+              v-model="pw"
+              type="password"
+              label="패스워드를 입력하세요."
+            ></v-text-field>
+            <v-select
+              v-model="position"
+              :items="positions"
+              label="신분"
+            ></v-select>
+            <v-select
+              class="float-left"
+              v-model="grade"
+              :items="grades"
+              label="학년"
+            ></v-select>
+            <v-text-field
+              v-model="ban"
+              type="text"
+              label="반"
+            ></v-text-field>
+            <v-text-field
+              v-model="kor_nm"
+              type="text"
+              label="한국 이름을 입력하세요."
+            ></v-text-field>
+            <v-text-field
+              v-model="end_nm"
+              type="text"
+              label="영어 이름을 입력하세요."
+            ></v-text-field>
+            <v-dialog
+              ref="dialog"
+              v-model="modal"
+              :return-value.sync="date"
+              persistent
+              width="290px"
+            >
+            <template v-slot:activator="{ on }">
+              <v-text-field
+                v-model="date"
+                label="생년월일"
+               
+                readonly
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="date" scrollable>
+              <v-spacer></v-spacer>
+              <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
+              <v-btn text color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+            </v-date-picker>
+            </v-dialog>
+            <v-radio-group v-model="gender_cd" row>
+              <v-radio label="남자" value="G01"></v-radio>
+              <v-radio label="여자" value="G02"></v-radio>
+            </v-radio-group>
+            <v-text-field
+              v-model="cel_phone_no"
+              type="text"
+              label="핸드폰 번호를 입력하세요."
+            ></v-text-field>
+             <v-text-field
+              v-model="home_phone_no"
+              type="text"
+              label="집 전화번호를 입력하세요."
+            ></v-text-field>
+             
+             <v-text-field
               v-model="email"
               type="email"
               label="이메일을 입력하세요."
             ></v-text-field>
-            <v-text-field
-              v-model="password"
-              type="password"
-              label="패스워드를 입력하세요."
-            ></v-text-field>
-            <v-text-field
-              v-model="nickname"
-              type="text"
-              label="이름을 입력하세요."
-            ></v-text-field>
-            <v-btn large block depressed color="primary" @click="register({
-              data: {
-                email: email,
-                password: password,
-                nickname: nickname
-              }
-            })">회원가입</v-btn>
+            
+            
+            <v-btn large block depressed color="primary" @click="register()">회원가입</v-btn>
           </div>
           
         </v-card>      
@@ -47,7 +106,46 @@
 export default {
   name: 'SignUp',
   data: () => ({
-    
-  })
+     grades: ['1학년', '2학년', '3학년', '4학년','5학년','6학년'],
+     positions: ['학생', '선생님'],
+     date: new Date().toISOString().substr(0, 10),
+     modal: false,
+     gender_cd:"",
+     user_id: "",
+     position: "",
+     grade: "",
+     home_phone_no:"",
+     cel_phone_no:"",
+     email:"",
+     end_nm:"",
+     kor_nm:"",
+     ban:"",
+     pw:""
+  }),
+  methods: {
+    register() {
+      var signup = {
+        user_id : this.user_id,
+        pw: this.pw,
+        position: this.position,
+        grade: this.grade,
+        ban: this.ban,
+        kor_nm: this.kor_nm,
+        end_nm: this.end_nm,
+        birth_dt: this.date,
+        gender_cd: this.gender_cd,
+        cel_phone_no: this.cel_phone_no,
+        home_phone_no: this.home_phone_no,
+        email: this.email
+      }
+
+      console.log(signup);
+      this.$http.post('/api/user').then((res) => {
+        console.log(res);
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
+  }
 }
 </script>
