@@ -14,20 +14,18 @@
           </v-toolbar>
           <div class="pa-3">
             <v-text-field
-              v-model="email"
-              type="email"
-              label="이메일을 입력하세요."
+              v-model="user_id"
+              type="text"
+              label="아이디를 입력하세요"
             ></v-text-field>
             <v-text-field
-              v-model="password"
+              v-model="pw"
               type="password"
               label="패스워드를 입력하세요."
             ></v-text-field>
             <v-btn large block depressed color="primary" @click="login({
-              data: {
-                email: email,
-                password: password
-              }
+                user_id: user_id,
+                pw: pw             
             })">로그인</v-btn>
 
           </div>
