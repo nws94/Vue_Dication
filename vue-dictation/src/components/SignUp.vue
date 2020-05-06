@@ -81,7 +81,7 @@
               label="핸드폰 번호를 입력하세요."
             ></v-text-field>
              <v-text-field
-              v-model="home_phone_no"
+              v-model="hom_phone_no"
               type="text"
               label="집 전화번호를 입력하세요."
             ></v-text-field>
@@ -106,15 +106,15 @@
 export default {
   name: 'SignUp',
   data: () => ({
-     grades: ['1학년', '2학년', '3학년', '4학년','5학년','6학년'],
+     grades: [1, 2, 3, 4,5,6],
      positions: ['학생', '선생님'],
      date: new Date().toISOString().substr(0, 10),
      modal: false,
      gender_cd:"",
      user_id: "",
      position: "",
-     grade: "",
-     home_phone_no:"",
+     grade: Number,
+     hom_phone_no:"",
      cel_phone_no:"",
      email:"",
      end_nm:"",
@@ -127,7 +127,7 @@ export default {
       var signup = {
         user_id : this.user_id,
         pw: this.pw,
-        position: this.position,
+        position_cd: this.position,
         grade: this.grade,
         ban: this.ban,
         kor_nm: this.kor_nm,
@@ -135,15 +135,14 @@ export default {
         birth_dt: this.date,
         gender_cd: this.gender_cd,
         cel_phone_no: this.cel_phone_no,
-        home_phone_no: this.home_phone_no,
+        hom_phone_no: this.hom_phone_no,
         email: this.email
       }
-
-      console.log(signup);
+     
       this.$http.post('/api/user',signup).then((res) => {
         console.log(res);
       }).catch((err) => {
-        console.log(err);
+        console.log(err); 
       })
     }
   }
