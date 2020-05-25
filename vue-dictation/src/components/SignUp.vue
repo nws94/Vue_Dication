@@ -103,6 +103,7 @@
 </template>
 
 <script>
+import router from '../router/index'
 export default {
   name: 'SignUp',
   data: () => ({
@@ -141,6 +142,7 @@ export default {
      
       this.$http.post('/api/user',signup).then((res) => {
         console.log(res);
+        router.push({name:'Home'});
       }).catch((err) => {
         console.log(err); 
       })

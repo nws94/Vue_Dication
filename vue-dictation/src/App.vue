@@ -109,12 +109,8 @@
         class="fill-height"
         fluid
       >
-        <v-row
-          align="center"
-          justify="center"
-        >
+
           <router-view></router-view>
-        </v-row>
       </v-container>
     </v-content>
   </v-app>
@@ -137,6 +133,9 @@ export default {
         { icon: 'mdi-home', text: 'Home' ,path:'/'},
         { icon: 'mdi-account-arrow-left', text: 'SignIn', path:'/sign-in' },
         { icon: 'mdi-account-plus', text: 'SignUp', path:'/sign-up' },
+        { text: '개설강좌', path:'/viewlc'},
+        { text: '수강강좌', path:'/readlc'},
+        { text: '학생강좌화면', path:'/studentlc'}
         // { icon: 'mdi-content-copy', text: 'Duplicates' },
         // {
         //   icon: 'mdi-chevron-up',

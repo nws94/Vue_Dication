@@ -19,6 +19,22 @@ const routes = [
     name: 'SignUp',
     component: () => import('../components/SignUp.vue')
   },
+  {
+    path: '/viewlc',
+    name: 'viewlc',
+    component: () => import('../components/Viewlc.vue')
+  },
+  {
+    path: '/readlc',
+    name: 'readlc',
+    component: () => import('../components/Readlc.vue')
+  },
+  {
+    path: '/studentlc',
+    name: 'studentlc',
+    component: () => import('../components/Studentlc.vue')
+  }
+
 
 ]
 
