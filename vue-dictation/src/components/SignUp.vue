@@ -93,7 +93,22 @@
             ></v-text-field>
             
             
-            <v-btn large block depressed color="primary" @click="register()">회원가입</v-btn>
+            <v-btn large block depressed color="primary" @click="signUp(
+                {
+                  user_id : user_id,
+                  pw: pw,
+                  position_cd: position,
+                  grade: grade,
+                  ban:ban,
+                  kor_nm: kor_nm,
+                  end_nm: end_nm,
+                  birth_dt: date,
+                  gender_cd: gender_cd,
+                  cel_phone_no: cel_phone_no,
+                  hom_phone_no: hom_phone_no,
+                  email: email
+              }
+            )">회원가입</v-btn>
           </div>
           
         </v-card>      
@@ -103,7 +118,8 @@
 </template>
 
 <script>
-import router from '../router/index'
+import {mapActions} from 'vuex';
+
 export default {
   name: 'SignUp',
   data: () => ({
@@ -124,29 +140,7 @@ export default {
      pw:""
   }),
   methods: {
-    register() {
-      var signup = {
-        user_id : this.user_id,
-        pw: this.pw,
-        position_cd: this.position,
-        grade: this.grade,
-        ban: this.ban,
-        kor_nm: this.kor_nm,
-        end_nm: this.end_nm,
-        birth_dt: this.date,
-        gender_cd: this.gender_cd,
-        cel_phone_no: this.cel_phone_no,
-        hom_phone_no: this.hom_phone_no,
-        email: this.email
-      }
-     
-      this.$http.post('/api/user',signup).then((res) => {
-        console.log(res);
-        router.push({name:'Home'});
-      }).catch((err) => {
-        console.log(err); 
-      })
-    }
+    ...mapActions(['signUp'])
   }
 }
 </script>

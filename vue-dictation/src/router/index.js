@@ -33,6 +33,10 @@ const routes = [
     path: '/studentlc',
     name: 'studentlc',
     component: () => import('../components/Studentlc.vue')
+  },{
+    path: '/write',
+    name: 'write',
+    component: () => import('../components/Teacher.vue')
   }
 
 

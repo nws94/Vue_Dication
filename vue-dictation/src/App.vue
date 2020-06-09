@@ -7,26 +7,6 @@
     >
       <v-list dense>
         <template v-for="item in items">
-          <v-row
-            v-if="item.heading"
-            :key="item.heading"
-            align="center"
-          >
-            <v-col cols="6">
-              <v-subheader v-if="item.heading">
-                {{ item.heading }}
-              </v-subheader>
-            </v-col>
-            <v-col
-              cols="6"
-              class="text-center"
-            >
-              <a
-                href="#!"
-                class="body-2 black--text"
-              >EDIT</a>
-            </v-col>
-          </v-row>
           <!-- <v-list-group
             v-else-if="item.children"
             :key="item.text"
@@ -57,7 +37,7 @@
             </v-list-item>
           </v-list-group> -->
           <v-list-item
-            v-else
+            v-if="item.isOpen"
             :key="item.text"
             :to="{path: item.path}"
             link
@@ -71,6 +51,7 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+         
         </template>
       </v-list>
     </v-navigation-drawer>
@@ -117,25 +98,22 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex';
 
 export default {
   name: 'App',
-
-  components: {
-  
-  },
-
   data: () => ({
     dialog: false,
-      drawer: null,
-      items: [
-        { icon: 'mdi-home', text: 'Home' ,path:'/'},
-        { icon: 'mdi-account-arrow-left', text: 'SignIn', path:'/sign-in' },
-        { icon: 'mdi-account-plus', text: 'SignUp', path:'/sign-up' },
-        { text: '개설강좌', path:'/viewlc'},
-        { text: '수강강좌', path:'/readlc'},
-        { text: '학생강좌화면', path:'/studentlc'}
+    drawer: null,
+    items: [
+  
+      { icon: 'mdi-home', text: 'Home' ,path:'/', isOpen: true},
+      { text: '개설강좌', path:'/viewlc',isOpen: true},
+      { text: '수강강좌', path:'/readlc',isOpen: true},
+      { text: '학생강좌화면', path:'/studentlc',isOpen:true},
+      { text: '쓰기', path:'/write',isOpen:true},
+      { icon: 'mdi-account-arrow-left', text: 'SignIn', path:'/sign-in',isOpen: false},
+      { icon: 'mdi-account-plus', text: 'SignUp', path:'/sign-up', isOpen:false},
         // { icon: 'mdi-content-copy', text: 'Duplicates' },
         // {
         //   icon: 'mdi-chevron-up',
@@ -157,5 +135,31 @@ export default {
         // { icon: 'mdi-keyboard', text: 'Go to the old version' },
       ],
   }),
+  components: {
+  
+  },
+  computed: {
+    ...mapState(['isSignIn'])
+  },
+  watch:{
+    isSignIn : function() {
+      this.items[5].isOpen = this.isSignIn,
+      this.items[6].isOpen = this.isSignIn
+    }
+    
+  },
+  // updated() {
+  //   if(this.isSignIn){
+  //     this.items.splice(1,2);
+  //     return;
+  //   }
+  // },
+  updated(){
+    if(this.isSignIn) {
+      this.items[5].isOpen = this.isSignIn,
+      this.items[6].isOpen = this.isSignIn
+    }
+  },
+  
 };
 </script>

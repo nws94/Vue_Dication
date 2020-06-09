@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="mx-auto">
     <v-toolbar
       color="purple"
       dark
@@ -47,7 +47,7 @@
             </v-btn>
           </v-card-title>
         
-            <v-btn color="primary" dark class="ml-5" v-on="on">강좌개설하기</v-btn>
+            <v-btn color="primary" dark class="ml-5">강좌개설하기</v-btn>
          
           <v-data-table
             :headers="headers"

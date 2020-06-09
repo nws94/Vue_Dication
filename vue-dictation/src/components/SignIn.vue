@@ -23,11 +23,10 @@
               type="password"
               label="패스워드를 입력하세요."
             ></v-text-field>
-            <v-btn large block depressed color="primary" @click="login({
-                user_id: user_id,
-                pw: pw             
+            <v-btn large block depressed color="primary" @click="signIn({
+              user_id: user_id,
+              pw: pw
             })">로그인</v-btn>
-
           </div>
           
         </v-card>      
@@ -37,10 +36,15 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
   name: 'SignIn',
   data: () => ({
-
-  })
+    user_id:"",
+    pw:""
+  }),
+  methods: {
+    ...mapActions(['signIn'])
+  }
 }
 </script>
