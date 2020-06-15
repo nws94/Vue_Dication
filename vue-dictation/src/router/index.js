@@ -37,6 +37,10 @@ const routes = [
     path: '/write',
     name: 'write',
     component: () => import('../components/Teacher.vue')
+  },{
+    path: '/s_write',
+    name: 'sWrite',
+    component: () => import('../components/Student.vue')
   }
 
 

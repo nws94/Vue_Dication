@@ -50,9 +50,15 @@
                 {{ item.text }}
               </v-list-item-title>
             </v-list-item-content>
-          </v-list-item>
-         
+          </v-list-item>         
         </template>
+        <v-list-item v-if="!isSignIn" @click="$store.dispatch('logout')" >
+            <v-list-item-content>
+              <v-list-item-title>
+              Logout
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -107,11 +113,12 @@ export default {
     drawer: null,
     items: [
   
-      { icon: 'mdi-home', text: 'Home' ,path:'/', isOpen: true},
+      { icon: 'mdi-home', text: 'Home' ,path:'/', isOpen: false},
+      { icon: 'mdi-home', text: '수강강좌', path:'/readlc',isOpen: true},
       { text: '개설강좌', path:'/viewlc',isOpen: true},
-      { text: '수강강좌', path:'/readlc',isOpen: true},
       { text: '학생강좌화면', path:'/studentlc',isOpen:true},
-      { text: '쓰기', path:'/write',isOpen:true},
+      { text: '받아쓰기등록', path:'/write',isOpen:false},
+      { text: '받아쓰기', path:'/s_write', isOpen:false},
       { icon: 'mdi-account-arrow-left', text: 'SignIn', path:'/sign-in',isOpen: false},
       { icon: 'mdi-account-plus', text: 'SignUp', path:'/sign-up', isOpen:false},
         // { icon: 'mdi-content-copy', text: 'Duplicates' },
@@ -139,12 +146,18 @@ export default {
   
   },
   computed: {
-    ...mapState(['isSignIn'])
+    ...mapState(['isSignIn','SorT'])
   },
   watch:{
     isSignIn : function() {
-      this.items[5].isOpen = this.isSignIn,
-      this.items[6].isOpen = this.isSignIn
+      this.items[6].isOpen = this.isSignIn,
+      this.items[7].isOpen = this.isSignIn
+    },
+    SorT : function(data) {
+      if(data !== "학생"){
+        this.items[5].isOpen = false;
+        this.items[4].isOpen = true;
+      }
     }
     
   },
@@ -156,8 +169,8 @@ export default {
   // },
   updated(){
     if(this.isSignIn) {
-      this.items[5].isOpen = this.isSignIn,
-      this.items[6].isOpen = this.isSignIn
+      this.items[6].isOpen = this.isSignIn,
+      this.items[7].isOpen = this.isSignIn
     }
   },
   

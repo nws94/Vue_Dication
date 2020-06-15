@@ -5,7 +5,7 @@ const actions = {
   signUp({commit},signUpObj) {
    
     this.$http.post('/api/user',signUpObj).then((res) => {
-      router.push({name:'Home'});
+      router.push({name:'SignIn'});
       console.log(res)
     }).catch((err) => {
       console.log(err,commit); 
@@ -15,8 +15,17 @@ const actions = {
     this.$http.get(`/api/user/login/${signInObj.user_id}&${signInObj.pw}`).then((res)=> {
       commit("signInSuccess");
       console.log(res);
+      if(res.data.position_cd === "학생") {
+        commit("setSorT","학생");
+      }else {
+        commit("setSorT","선생님");
+      }
       router.push({name: 'Home'});
     })
+  },
+  logout({commit}){
+    commit("logout");
+    router.push({name:'SignIn'});
   }
 
 }

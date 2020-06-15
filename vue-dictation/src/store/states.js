@@ -1,5 +1,6 @@
 
 const state = {
-  isSignIn: true
+  isSignIn: true,
+  SorT: '',
 }
 export default state;

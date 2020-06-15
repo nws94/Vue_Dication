@@ -17,13 +17,14 @@
       :search="search"
     >
       <template v-slot:item.actions="{ item }">
-      <v-btn class="mr-5" small color="primary" @click="{item}">들어가기</v-btn>
+      <v-btn class="mr-5" small color="primary" @click="goCource(item)">받아쓰기</v-btn>
       </template>
     </v-data-table>
   </v-card>
 </template>
 
 <script>
+import router from '../router'
   export default {
     data () {
       return {
@@ -59,5 +60,10 @@
         ],
       }
     },
+    methods: {
+      goCource() {
+        router.push({name:'sWrite'})
+      }
+    }
   }
 </script>
