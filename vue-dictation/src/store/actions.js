@@ -2,12 +2,13 @@ import router from '../router/index';
 
 const actions = {
   // 회원가입
-  signUp(signUpObj) {
+  signUp({commit},signUpObj) {
+   
     this.$http.post('/api/user',signUpObj).then((res) => {
       router.push({name:'Home'});
       console.log(res)
     }).catch((err) => {
-      console.log(err); 
+      console.log(err,commit); 
     })
   },
   signIn({commit},signInObj) {
