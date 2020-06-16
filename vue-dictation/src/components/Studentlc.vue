@@ -99,7 +99,7 @@
           { text: '학년', value: 'grade' },
           { text: '선생님', value: 'teach_id' },
           { text: '강좌기간', value: 'enroll_en_dt' },
-          { text: '점수', value: 'lecture_level' },
+          { text: '내 점수', value: 'lecture_level' },
         ],
         lecture1: [
           {
@@ -107,7 +107,7 @@
             grade: 1,
             teach_id: '사오정',
             enroll_en_dt: '5.16-6.26',
-            lecture_level: '60점',
+            lecture_level: '70점',
           },   
         ],
         headers: [
