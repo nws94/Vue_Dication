@@ -15,7 +15,7 @@ const actions = {
     this.$http.get(`/api/user/login/${signInObj.user_id}&${signInObj.pw}`).then((res)=> {
       commit("signInSuccess");
       console.log(res);
-      if(res.data.position_cd === "학생") {
+      if(res.data.position_cd === "003003") {
         commit("setSorT","학생");
         router.push({name: 'readlc'});
       }else {

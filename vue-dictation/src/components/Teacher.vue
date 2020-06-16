@@ -48,7 +48,7 @@ export default {
        
         this.$http.post('/api/course',item).then(res => {
           console.log(res);
-          router.push({path: '/studentlc'})
+          router.push({path: '/home'})
         }).catch(err => {
           console.error(err);
         })
