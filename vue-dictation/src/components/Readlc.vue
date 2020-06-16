@@ -17,7 +17,7 @@
       :search="search"
     >
       <template v-slot:item.actions="{ item }">
-      <v-btn class="mr-5" small color="primary" @click="goCource(item)">받아쓰기</v-btn>
+      <v-btn class="mr-5" small color="primary" @click="goCource(item)">시작하기</v-btn>
       </template>
     </v-data-table>
   </v-card>
@@ -38,25 +38,17 @@ import router from '../router'
           },
           { text: '학년', value: 'grade' },
           { text: '선생님', value: 'kor_nm' },
-          { text: '신청기간', value: 'enroll_st_dt' },
-          { text: '강좌선택', value: 'actions', sortable: false },
+          { text: '수강기간', value: 'enroll_st_dt' },
+          { text: '받아쓰기', value: 'actions', sortable: false },
         ],
         lecture: [
           {
             lecture_nm: '2반 받아쓰기',
             grade: 1,
             kor_nm: '사오정',
-            enroll_st_dt: '5.16-5.26',
-            lecture_enter: '들어가기',
+            enroll_st_dt: '5.16-6.26',
+            lecture_enter: '시작하기',
           },
-          {
-            lecture_nm: '3반 받아쓰기',
-            grade: 1,
-            kor_nm: '삼장',
-            enroll_st_dt: '5.16-5.26',
-            lecture_enter: '들어가기',
-          },
-          
         ],
       }
     },

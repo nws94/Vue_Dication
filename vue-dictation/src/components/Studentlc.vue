@@ -86,7 +86,7 @@
   export default {
     data () {
       return {
-        lectureTitles:["신청강좌","공지사항","학습하기","Q&A"],
+        lectureTitles:["신청강좌","공지사항","Q&A"],
         tabs: null,
                 search: '',
           headers1: [
@@ -99,7 +99,7 @@
           { text: '학년', value: 'grade' },
           { text: '선생님', value: 'teach_id' },
           { text: '강좌기간', value: 'enroll_en_dt' },
-          { text: '수강단계', value: 'lecture_level' },
+          { text: '점수', value: 'lecture_level' },
         ],
         lecture1: [
           {
@@ -107,16 +107,8 @@
             grade: 1,
             teach_id: '사오정',
             enroll_en_dt: '5.16-6.26',
-            lecture_level: '5단계',
-          },
-          {
-            lecture_nm: '3반 받아쓰기',
-            grade: 1,
-            teach_id: '삼장',
-            enroll_en_dt: '5.16-6.26',
-            lecture_level: '6단계',
-          },
-          
+            lecture_level: '60점',
+          },   
         ],
         headers: [
           {text:'No', value:'board_cd'},

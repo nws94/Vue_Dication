@@ -44,16 +44,16 @@
         lecture: [
           {
             lecture_nm: '1반 받아쓰기',
-            grade: 2,
+            grade: 1,
             kor_nm: '홍길동',
-            enroll_st_dt: '5.16-5.26',
+            enroll_st_dt: '5.16-6.23',
             lecture_check: '미신청',
           },
           {
             lecture_nm: '2반 받아쓰기',
             grade: 1,
             kor_nm: '사오정',
-            enroll_st_dt: '5.16-5.26',
+            enroll_st_dt: '5.16-6.23',
             lecture_check: '신청완료',
           },
           

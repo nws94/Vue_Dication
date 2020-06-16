@@ -56,43 +56,40 @@
           >
         <template v-slot:item.actions="{ item }">
           <v-btn class="mr-5" small color="primary" @click="{item}" >학습자료보기</v-btn>
-          <v-btn small color="primary" @click="goCource()">받아쓰기</v-btn>
+          <v-btn small color="primary" @click="goCource()">시작하기</v-btn>
         </template>
         </v-data-table>
         </v-card>
       </v-tab-item>
-      <v-tab-item>
-        <v-card flat>
-          <v-card-title class="headline">An awesome title</v-card-title>
-          <v-card-text>
-            <p>
-              Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Praesent congue erat at massa.
-            </p>
-
-            <p>
-              Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Etiam sit amet orci eget eros faucibus tincidunt. Donec sodales sagittis magna.
-            </p>
-
-            <p class="mb-0">
-              Ut leo. Suspendisse potenti. Duis vel nibh at velit scelerisque suscipit. Fusce pharetra convallis urna.
-            </p>
-          </v-card-text>
-        </v-card>
-      </v-tab-item>
-      <v-tab-item>
-        <v-card flat>
-          <v-card-title class="headline">An even better title</v-card-title>
-          <v-card-text>
-            <p>
-              Maecenas ullamcorper, dui et placerat feugiat, eros pede varius nisi, condimentum viverra felis nunc et lorem. Sed hendrerit. Maecenas malesuada. Vestibulum ullamcorper mauris at ligula. Proin faucibus arcu quis ante.
-            </p>
-
-            <p class="mb-0">
-              Etiam vitae tortor. Curabitur ullamcorper ultricies nisi. Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Aliquam lobortis. Suspendisse potenti.
-            </p>
-          </v-card-text>
-        </v-card>
-      </v-tab-item>
+     <v-tab-item>
+          <v-card class="mx-auto">
+    <v-card-title>
+      <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="검색어를 입력하세요"
+        single-line
+        hide-details
+      ></v-text-field>
+    </v-card-title>
+    <v-data-table
+      :headers="headers2"
+      :items="lecture2"
+      :search="search2"
+    ></v-data-table>
+    </v-card>
+    </v-tab-item>
+     <v-tab-item>
+     <v-card class="mx-auto">
+      <v-spacer></v-spacer>
+       <v-data-table
+        :headers="headers3"
+        :items="lecture3"
+        :search="search3"
+       ></v-data-table>
+     </v-card>
+    </v-tab-item>
     </v-tabs-items>
   </v-card>
 </template>
@@ -115,19 +112,60 @@ import router from '../router'
         ],
         desserts: [
           {
-            courseName: '받아쓰기(2학년 1반)',
-            grade: 2,
-            teacher: "김개똥",
-            courseDate: "2.13 - 3.30",
+            courseName: '1반 받아쓰기',
+            grade: 1,
+            teacher: "홍길동",
+            courseDate: "5.16 - 6.26",
         
           },
           {
-            courseName: '받아쓰기(1학년 3반)',
+            courseName: '2반 받아쓰기',
             grade: 1,
-            teacher: "김말똥",
-            courseDate: "2.13 - 3.30",
+            teacher: "사오정",
+            courseDate: "5.16 - 6.26",
       
           },
+          {
+            courseName: '3반 받아쓰기',
+            grade: 1,
+            teacher: "삼장",
+            courseDate: "5.16 - 6.26",
+      
+          },
+        ],
+        headers2: [
+          {text:'No', value:'board_cd'},
+          {
+            text: '제목',
+            align: 'start',
+            sortable: false,
+            value: 'board_nm',
+          },
+          { text: '파일', value: 'file' },
+          { text: '작성자', value: 'input_id' },
+          { text: '작성일', value: 'input_dt' },
+          { text: '조회수', value: 'views' },
+        ],
+        headers3: [
+          {
+            text: '강좌명',
+            align: 'start',
+            sortable: false,
+            value: 'lecture_nm',
+          },
+          { text: '학년', value: 'grade' },
+          { text: '반', value: 'ban' },
+          { text: '학생이름', value: 'kor_nm' },
+          { text: '점수', value: 'lecture_level' },
+        ],
+        lecture3: [
+        {
+            lecture_nm: '2반 받아쓰기',
+            grade: 1,
+            ban: 5,
+            kor_nm: '강대성',
+            lecture_level: '70점',
+        },   
         ],
       }
     },
