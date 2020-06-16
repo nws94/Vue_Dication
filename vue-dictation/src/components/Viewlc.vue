@@ -17,8 +17,8 @@
       :search="search"
     >
       <template v-slot:item.actions="{ item }">
-          <v-btn v-if="item.lecture_check === '미신청'" class="mr-5" small color="primary" @click="test(item)">신청하기</v-btn>
-          <v-btn v-else small color="primary" @click="{item}">신청취소</v-btn>
+          <v-btn v-if="item.lecture_check === '미신청'" class="mr-5" small color="primary" @click="sumbit(item.id)">신청하기</v-btn>
+          <v-btn v-else small color="primary" @click="cancle(item.id)">신청취소</v-btn>
       </template></v-data-table>
   </v-card>
 </template>
@@ -43,6 +43,7 @@
         ],
         lecture: [
           {
+            id:0,
             lecture_nm: '1반 받아쓰기',
             grade: 1,
             kor_nm: '홍길동',
@@ -50,6 +51,7 @@
             lecture_check: '미신청',
           },
           {
+            id:1,
             lecture_nm: '2반 받아쓰기',
             grade: 1,
             kor_nm: '사오정',
@@ -60,5 +62,13 @@
         ],
       }
     },
+    methods: {
+      sumbit(id) {
+        this.lecture[id].lecture_check = "신청완료"
+      },
+      cancle(id) {
+        this.lecture[id].lecture_check = "미신청"
+      }
+    }
   }
 </script>

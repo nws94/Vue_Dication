@@ -22,6 +22,7 @@
 </v-container>
 </template>
 <script>
+import router from '../router'
 export default {
   data: () => ({
     answers: [
@@ -40,36 +41,20 @@ export default {
   }),
   methods: {
     test() {
-      // const formData = new FormData();
       
-      // formData.append("year",null);
-      // formData.append("term",null);
-      // formData.append("lecture_no",1);
-      // formData.append("course_no",1);
-      // formData.append("question_no",1);
-      // formData.append("file", this.fileTest);
-      // formData.append("file_save_nm",null);
-      // formData.append("input_id",null);
-      // formData.append("updated_id",null);
-      // formData.append("update_date",null);
-
      
 
       for(let item of this.answers) {
-        console.log(item);
+       
         this.$http.post('/api/course',item).then(res => {
           console.log(res);
+          router.push({path: '/studentlc'})
         }).catch(err => {
           console.error(err);
         })
       }
      
-      // // console.log(formData);
-      // this.$http.post('/api/course',testObj).then(res => {
-      //   console.log(res);
-      // }).catch(err => {
-      //   console.error(err);
-      // })
+    
       //파일 저장
       // this.$http.post('/api/course/fileupload',formData, {
       //   headers: {

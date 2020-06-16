@@ -113,13 +113,13 @@ export default {
     drawer: null,
     items: [
   
-      { icon: 'mdi-home', text: 'Home' ,path:'/', isOpen: false},
-      { icon: 'mdi-home', text: '수강강좌', path:'/readlc',isOpen: true},
-      { text: '개설강좌', path:'/viewlc',isOpen: true},
-      { text: '학생강좌화면', path:'/studentlc',isOpen:true},
+      {  text: 'TeacherMain' ,path:'/home', isOpen: false},
+      { text: '수강강좌', path:'/readlc',isOpen: false},
+      { text: '개설강좌', path:'/viewlc',isOpen: false},
+      { text: '학생강좌화면', path:'/studentlc',isOpen:false},
       { text: '받아쓰기등록', path:'/write',isOpen:false},
       { text: '받아쓰기', path:'/s_write', isOpen:false},
-      { icon: 'mdi-account-arrow-left', text: 'SignIn', path:'/sign-in',isOpen: false},
+      { icon: 'mdi-account-arrow-left', text: 'SignIn', path:'/',isOpen: false},
       { icon: 'mdi-account-plus', text: 'SignUp', path:'/sign-up', isOpen:false},
         // { icon: 'mdi-content-copy', text: 'Duplicates' },
         // {
@@ -155,8 +155,22 @@ export default {
     },
     SorT : function(data) {
       if(data !== "학생"){
-        this.items[5].isOpen = false;
+      
         this.items[4].isOpen = true;
+        this.items[0].isOpen = true;
+
+        this.items[5].isOpen = false;
+        this.items[1].isOpen = false;
+        this.items[2].isOpen = false;
+        this.items[3].isOpen = false;
+      } else if(data === "학생") {
+         this.items[4].isOpen = false;
+        this.items[0].isOpen = false;
+
+        this.items[5].isOpen = false;
+        this.items[1].isOpen = true;
+        this.items[2].isOpen = true;
+        this.items[3].isOpen = true;
       }
     }
     

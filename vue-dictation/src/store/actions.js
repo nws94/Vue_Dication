@@ -17,10 +17,12 @@ const actions = {
       console.log(res);
       if(res.data.position_cd === "학생") {
         commit("setSorT","학생");
+        router.push({name: 'readlc'});
       }else {
         commit("setSorT","선생님");
+        router.push({name: 'Home'});
       }
-      router.push({name: 'Home'});
+      
     })
   },
   logout({commit}){
